@@ -3,7 +3,7 @@ import pygame_gui
 
 from scripts.datadir import get_save_dir
 
-import ujson
+import json
 import os
 from ast import literal_eval
 
@@ -146,7 +146,7 @@ class Game():
     setting_lists = {}
 
     with open("resources/gamesettings.json", 'r') as read_file:
-        _settings = ujson.loads(read_file.read())
+        _settings = json.loads(read_file.read())
 
     for setting, values in _settings['__other'].items():
         settings[setting] = values[0]
@@ -179,7 +179,7 @@ class Game():
         self.switch_screens = False
 
         with open(f"resources/game_config.json", 'r') as read_file:
-            self.config = ujson.loads(read_file.read())
+            self.config = json.loads(read_file.read())
 
         if self.config['fun']['april_fools']:
             self.config['fun']['newborns_can_roam'] = True
@@ -434,7 +434,7 @@ class Game():
                 inter_cat.save_relationship_of_cat(directory + '/relationships')
         try:
             with open(get_save_dir() + '/' + clanname + '/clan_cats.json', 'w') as write_file:
-                json_string = ujson.dumps(clan_cats, indent=4)
+                json_string = json.dumps(clan_cats, indent=4)
                 write_file.write(json_string)
         except:
             print("ERROR: Saving cats didn't work.")
@@ -564,7 +564,7 @@ class Game():
             try:
 
                 with open(get_save_dir() + '/' + clanname + '/faded_cats/' + cat + ".json", 'w') as write_file:
-                    json_string = ujson.dumps(cat_data, indent=4)
+                    json_string = json.dumps(cat_data, indent=4)
                     write_file.write(json_string)
             except:
                 print("ERROR: Something went wrong while saving a faded cat")
@@ -588,7 +588,7 @@ class Game():
         both active and faded cat's faded offpsring. This will add a faded offspring to a faded parents file. """
         try:
             with open(get_save_dir() + '/' + self.clan.name + '/faded_cats/' + parent + ".json", 'r') as read_file:
-                cat_info = ujson.loads(read_file.read())
+                cat_info = json.loads(read_file.read())
         except:
             print("ERROR: loading faded cat")
             return False
@@ -596,7 +596,7 @@ class Game():
         cat_info["faded_offspring"].append(offspring)
 
         with open(get_save_dir() + '/' + self.clan.name + '/faded_cats/' + parent + ".json", 'w') as write_file:
-            json_string = ujson.dumps(cat_info, indent=4)
+            json_string = json.dumps(cat_info, indent=4)
             write_file.write(json_string)
 
         return True

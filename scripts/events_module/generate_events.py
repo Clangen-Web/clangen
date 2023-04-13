@@ -2,7 +2,7 @@
 # -*- coding: ascii -*-
 import random
 
-import ujson
+import json
 from scripts.game_structure.game_essentials import game
 
 resource_directory = "resources/dicts/events/"
@@ -22,7 +22,7 @@ class GenerateEvents:
                     file_path,
                     "r",
             ) as read_file:
-                events = ujson.loads(read_file.read())
+                events = json.loads(read_file.read())
         except:
             print(f"ERROR: Unable to load {file_path}.")
             return None
@@ -37,7 +37,7 @@ class GenerateEvents:
                     file_path,
                     "r",
             ) as read_file:
-                events = ujson.loads(read_file.read())
+                events = json.loads(read_file.read())
         except:
             print(f"ERROR: Unable to load events from biome {file_path}.")
 
@@ -51,7 +51,7 @@ class GenerateEvents:
                     file_path,
                     "r",
             ) as read_file:
-                events = ujson.loads(read_file.read())
+                events = json.loads(read_file.read())
         except:
             print(f"ERROR: Unable to load death reaction events for {family_relation}_{rel_value}.")
         return events
@@ -611,8 +611,8 @@ class OngoingEvent:
 
 INJURY_DISTRIBUTION = None
 with open(f"resources/dicts/conditions/event_injuries_distribution.json", 'r') as read_file:
-    INJURY_DISTRIBUTION = ujson.loads(read_file.read())
+    INJURY_DISTRIBUTION = json.loads(read_file.read())
 
 INJURIES = None
 with open(f"resources/dicts/conditions/injuries.json", 'r') as read_file:
-    INJURIES = ujson.loads(read_file.read())
+    INJURIES = json.loads(read_file.read())

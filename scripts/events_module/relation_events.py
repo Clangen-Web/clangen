@@ -2,7 +2,7 @@ import itertools
 import random
 from random import choice, randint
 import os
-import ujson
+import json
 
 from scripts.game_structure.game_essentials import game
 from scripts.events_module.condition_events import Condition_Events
@@ -479,4 +479,4 @@ base_path = os.path.join(
 GROUP_TYPES = {}
 types_path = os.path.join(base_path,"group_interactions" ,"group_types.json")
 with open(types_path, 'r') as read_file:
-    GROUP_TYPES = ujson.load(read_file)
+    GROUP_TYPES = json.load(read_file)

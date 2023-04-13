@@ -4,7 +4,7 @@ from random import choice, sample
 import pygame
 import pygame_gui
 
-import ujson
+import json
 from .base_screens import Screens, cat_profiles
 from scripts.utility import get_text_box_theme, scale, get_personality_compatibility, check_relationship_value, \
     get_snippet_list
@@ -1272,4 +1272,4 @@ resource_directory = "resources/dicts/patrols/"
 
 EXPLICIT_PATROL_ART = None
 with open(f"{resource_directory}explicit_patrol_art.json", 'r') as read_file:
-    EXPLICIT_PATROL_ART = ujson.loads(read_file.read())
+    EXPLICIT_PATROL_ART = json.loads(read_file.read())

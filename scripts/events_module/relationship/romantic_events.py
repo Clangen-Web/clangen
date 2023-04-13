@@ -3,7 +3,7 @@ from copy import deepcopy
 from random import choice
 import random
 
-import ujson
+import json
 
 from scripts.utility import (
     get_highest_romantic_relation, 
@@ -379,7 +379,7 @@ resource_directory = "resources/dicts/relationship_events/"
 
 MATE_DICTS = None
 with open(f"{resource_directory}become_mates.json", 'r') as read_file:
-    MATE_DICTS = ujson.loads(read_file.read())
+    MATE_DICTS = json.loads(read_file.read())
 
 # ---------------------------------------------------------------------------- #
 #            build up dictionaries which can be used for moon events           #

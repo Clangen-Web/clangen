@@ -1,5 +1,5 @@
 import os
-import ujson
+import json
 from copy import deepcopy
 from random import choice
 
@@ -169,10 +169,10 @@ for file in os.listdir(base_path):
         continue
     status = file.split(".")[0]
     with open(os.path.join(base_path, file), 'r') as read_file:
-        welcome_list = ujson.load(read_file)
+        welcome_list = json.load(read_file)
         WELCOMING_MASTER_DICT[status] = create_welcome_interaction(welcome_list)
 
 GENERAL_WELCOMING = []
 with open(os.path.join(base_path, "general.json"), 'r') as read_file:
-    loaded_list = ujson.loads(read_file.read())
+    loaded_list = json.loads(read_file.read())
     GENERAL_WELCOMING = create_welcome_interaction(loaded_list)

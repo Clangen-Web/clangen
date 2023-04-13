@@ -1,6 +1,6 @@
 import random
 import os
-import ujson
+import json
 
 from scripts.datadir import get_save_dir
 
@@ -10,7 +10,7 @@ from scripts.game_structure.game_essentials import game
 class Name():
     if os.path.exists('resources/dicts/names/names.json'):
         with open('resources/dicts/names/names.json') as read_file:
-            names_dict = ujson.loads(read_file.read())
+            names_dict = json.loads(read_file.read())
 
         if os.path.exists(get_save_dir() + '/prefixlist.txt'):
             with open(get_save_dir() + '/prefixlist.txt', 'r') as read_file:

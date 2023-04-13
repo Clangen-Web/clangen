@@ -8,7 +8,7 @@ import pygame
 from ..datadir import get_save_dir
 from ..game_structure.windows import ChangeCatName, SpecifyCatGender
 
-import ujson
+import json
 
 from scripts.utility import update_sprite, event_text_adjust, scale, ACC_DISPLAY
 
@@ -1120,7 +1120,7 @@ class ProfileScreen(Screens):
 
         try:
             with open(notes_file_path, 'w') as rel_file:
-                json_string = ujson.dumps(new_notes, indent=2)
+                json_string = json.dumps(new_notes, indent=2)
                 rel_file.write(json_string)
 
         except:
@@ -1138,7 +1138,7 @@ class ProfileScreen(Screens):
 
         try:
             with open(notes_file_path, 'r') as read_file:
-                rel_data = ujson.loads(read_file.read())
+                rel_data = json.loads(read_file.read())
                 self.user_notes = 'Click the check mark to enter notes about your cat!'
                 if str(self.the_cat.ID) in rel_data:
                     self.user_notes = rel_data.get(str(self.the_cat.ID))

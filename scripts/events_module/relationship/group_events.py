@@ -1,5 +1,5 @@
 import os
-import ujson
+import json
 from random import choice, shuffle
 from copy import deepcopy
 
@@ -565,15 +565,15 @@ for cat_amount in os.listdir(base_path):
     file_path = os.path.join(base_path, cat_amount, "neutral.json")
     GROUP_INTERACTION_MASTER_DICT[cat_amount] = {}
     with open(file_path, 'r') as read_file:
-        welcome_list = ujson.load(read_file)
+        welcome_list = json.load(read_file)
         GROUP_INTERACTION_MASTER_DICT[cat_amount]["neutral"] = create_group_interaction(welcome_list)
     
     file_path = os.path.join(base_path, cat_amount, "positive.json")
     with open(file_path, 'r') as read_file:
-        welcome_list = ujson.load(read_file)
+        welcome_list = json.load(read_file)
         GROUP_INTERACTION_MASTER_DICT[cat_amount]["positive"] = create_group_interaction(welcome_list)
 
     file_path = os.path.join(base_path, cat_amount, "negative.json")
     with open(file_path, 'r') as read_file:
-        welcome_list = ujson.load(read_file)
+        welcome_list = json.load(read_file)
         GROUP_INTERACTION_MASTER_DICT[cat_amount]["negative"] = create_group_interaction(welcome_list)

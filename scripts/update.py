@@ -3,16 +3,16 @@ import platform
 import shutil
 import subprocess
 import sys
-import tarfile
+# import tarfile
 import tempfile
 import time
 import urllib.parse
 import zipfile
 from enum import auto
 
-import pgpy
-import requests
-from requests import Response
+# import pgpy
+#import requests
+#from requests import Response
 from strenum import StrEnum
 
 from scripts.progress_bar_updater import UIUpdateProgressBar
@@ -44,8 +44,8 @@ def get_timeout() -> int:
     return 15
 
 
-def configured_get_request(url: str, stream: bool = False) -> Response:
-    return requests.get(url, stream=stream, proxies=proxies, verify=(not use_proxy), timeout=get_timeout())
+#def configured_get_request(url: str, stream: bool = False) -> Response:
+    #return requests.get(url, stream=stream, proxies=proxies, verify=(not use_proxy), timeout=get_timeout())
 
 
 def download_file(url: str):

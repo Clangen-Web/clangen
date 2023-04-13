@@ -4,7 +4,7 @@ import os
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-import ujson
+import json
 
 from scripts.cat.cats import Cat
 from scripts.conditions import medical_cats_condition_fulfilled
@@ -117,7 +117,7 @@ class TestsIllnesses(unittest.TestCase):
 
         ILLNESSES = None
         with open(f"{resource_directory}Illnesses.json", 'r') as read_file:
-            ILLNESSES = ujson.loads(read_file.read())
+            ILLNESSES = json.loads(read_file.read())
         return ILLNESSES
 
     def test_get_ill_unknown_name(self):
@@ -136,7 +136,7 @@ class TestInjury(unittest.TestCase):
 
         INJURIES = None
         with open(f"{resource_directory}Injuries.json", 'r') as read_file:
-            INJURIES = ujson.loads(read_file.read())
+            INJURIES = json.loads(read_file.read())
         return INJURIES
     
     def test_get_injured_unknown_name(self):

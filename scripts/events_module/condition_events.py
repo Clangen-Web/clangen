@@ -1,4 +1,4 @@
-import ujson
+import json
 import random
 from copy import deepcopy
 
@@ -935,26 +935,26 @@ resource_directory = "resources/dicts/conditions/"
 
 ILLNESSES = None
 with open(f"{resource_directory}illnesses.json", 'r') as read_file:
-    ILLNESSES = ujson.loads(read_file.read())
+    ILLNESSES = json.loads(read_file.read())
 
 INJURIES = None
 with open(f"{resource_directory}injuries.json", 'r') as read_file:
-    INJURIES = ujson.loads(read_file.read())
+    INJURIES = json.loads(read_file.read())
 
 PERMANENT = None
 with open(f"resources/dicts/conditions/permanent_conditions.json", 'r') as read_file:
-    PERMANENT = ujson.loads(read_file.read())
+    PERMANENT = json.loads(read_file.read())
 # ---------------------------------------------------------------------------- #
 #                                    CHANCE                                    #
 # ---------------------------------------------------------------------------- #
 
 ILLNESSES_SEASON_LIST = None
 with open(f"resources/dicts/conditions/illnesses_seasons.json", 'r') as read_file:
-    ILLNESSES_SEASON_LIST = ujson.loads(read_file.read())
+    ILLNESSES_SEASON_LIST = json.loads(read_file.read())
 
 INJURY_DISTRIBUTION = None
 with open(f"resources/dicts/conditions/event_injuries_distribution.json", 'r') as read_file:
-    INJURY_DISTRIBUTION = ujson.loads(read_file.read())
+    INJURY_DISTRIBUTION = json.loads(read_file.read())
 
 # ---------------------------------------------------------------------------- #
 #                                   STRINGS                                    #
@@ -962,32 +962,32 @@ with open(f"resources/dicts/conditions/event_injuries_distribution.json", 'r') a
 
 PERM_CONDITION_RISK_STRINGS = None
 with open(f"resources/dicts/conditions/risk_strings/permanent_condition_risk_strings.json", 'r') as read_file:
-    PERM_CONDITION_RISK_STRINGS = ujson.loads(read_file.read())
+    PERM_CONDITION_RISK_STRINGS = json.loads(read_file.read())
 
 ILLNESS_RISK_STRINGS = None
 with open(f"resources/dicts/conditions/risk_strings/illness_risk_strings.json", 'r') as read_file:
-    ILLNESS_RISK_STRINGS = ujson.loads(read_file.read())
+    ILLNESS_RISK_STRINGS = json.loads(read_file.read())
 
 INJURY_RISK_STRINGS = None
 with open(f"resources/dicts/conditions/risk_strings/injuries_risk_strings.json", 'r') as read_file:
-    INJURY_RISK_STRINGS = ujson.loads(read_file.read())
+    INJURY_RISK_STRINGS = json.loads(read_file.read())
 
 CONGENITAL_CONDITION_GOT_STRINGS = None
 with open(f"resources/dicts/conditions/condition_got_strings/gain_congenital_condition_strings.json", 'r') as read_file:
-    CONGENITAL_CONDITION_GOT_STRINGS = ujson.loads(read_file.read())
+    CONGENITAL_CONDITION_GOT_STRINGS = json.loads(read_file.read())
 
 PERMANENT_CONDITION_GOT_STRINGS = None
 with open(f"resources/dicts/conditions/condition_got_strings/gain_permanent_condition_strings.json", 'r') as read_file:
-    PERMANENT_CONDITION_GOT_STRINGS = ujson.loads(read_file.read())
+    PERMANENT_CONDITION_GOT_STRINGS = json.loads(read_file.read())
 
 ILLNESS_HEALED_STRINGS = None
 with open(f"resources/dicts/conditions/healed_and_death_strings/illness_healed_strings.json", 'r') as read_file:
-    ILLNESS_HEALED_STRINGS = ujson.loads(read_file.read())
+    ILLNESS_HEALED_STRINGS = json.loads(read_file.read())
 
 INJURY_HEALED_STRINGS = None
 with open(f"resources/dicts/conditions/healed_and_death_strings/injury_healed_strings.json", 'r') as read_file:
-    INJURY_HEALED_STRINGS = ujson.loads(read_file.read())
+    INJURY_HEALED_STRINGS = json.loads(read_file.read())
 
 INJURY_DEATH_STRINGS = None
 with open(f"resources/dicts/conditions/healed_and_death_strings/injury_death_strings.json", 'r') as read_file:
-    INJURY_DEATH_STRINGS = ujson.loads(read_file.read())
+    INJURY_DEATH_STRINGS = json.loads(read_file.read())

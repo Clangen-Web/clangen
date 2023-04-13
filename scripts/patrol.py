@@ -3,7 +3,7 @@
 import random
 from random import choice, randint, choices
 
-import ujson
+import json
 
 from scripts.clan import HERBS, Clan
 from scripts.utility import (
@@ -1336,67 +1336,67 @@ class Patrol():
         # HUNTING #
         self.HUNTING_SZN = None
         with open(f"{resource_dir}{biome_dir}hunting/{leaf}.json", 'r', encoding='ascii') as read_file:
-            self.HUNTING_SZN = ujson.loads(read_file.read())
+            self.HUNTING_SZN = json.loads(read_file.read())
         self.HUNTING = None
         with open(f"{resource_dir}{biome_dir}hunting/any.json", 'r', encoding='ascii') as read_file:
-            self.HUNTING = ujson.loads(read_file.read())
+            self.HUNTING = json.loads(read_file.read())
         # BORDER #
         self.BORDER_SZN = None
         with open(f"{resource_dir}{biome_dir}border/{leaf}.json", 'r', encoding='ascii') as read_file:
-            self.BORDER_SZN = ujson.loads(read_file.read())
+            self.BORDER_SZN = json.loads(read_file.read())
         self.BORDER = None
         with open(f"{resource_dir}{biome_dir}border/any.json", 'r', encoding='ascii') as read_file:
-            self.BORDER = ujson.loads(read_file.read())
+            self.BORDER = json.loads(read_file.read())
         # TRAINING #
         self.TRAINING_SZN = None
         with open(f"{resource_dir}{biome_dir}training/{leaf}.json", 'r', encoding='ascii') as read_file:
-            self.TRAINING_SZN = ujson.loads(read_file.read())
+            self.TRAINING_SZN = json.loads(read_file.read())
         self.TRAINING = None
         with open(f"{resource_dir}{biome_dir}training/any.json", 'r', encoding='ascii') as read_file:
-            self.TRAINING = ujson.loads(read_file.read())
+            self.TRAINING = json.loads(read_file.read())
         # MED #
         self.MEDCAT_SZN = None
         with open(f"{resource_dir}{biome_dir}med/{leaf}.json", 'r', encoding='ascii') as read_file:
-            self.MEDCAT_SZN = ujson.loads(read_file.read())
+            self.MEDCAT_SZN = json.loads(read_file.read())
         self.MEDCAT = None
         with open(f"{resource_dir}{biome_dir}med/any.json", 'r', encoding='ascii') as read_file:
-            self.MEDCAT = ujson.loads(read_file.read())
+            self.MEDCAT = json.loads(read_file.read())
         # NEW CAT #
         self.NEW_CAT = None
         with open(f"{resource_dir}new_cat.json", 'r', encoding='ascii') as read_file:
-            self.NEW_CAT = ujson.loads(read_file.read())
+            self.NEW_CAT = json.loads(read_file.read())
         self.NEW_CAT_HOSTILE = None
         with open(f"{resource_dir}new_cat_hostile.json", 'r', encoding='ascii') as read_file:
-            self.NEW_CAT_HOSTILE = ujson.loads(read_file.read())
+            self.NEW_CAT_HOSTILE = json.loads(read_file.read())
         self.NEW_CAT_WELCOMING = None
         with open(f"{resource_dir}new_cat_welcoming.json", 'r', encoding='ascii') as read_file:
-            self.NEW_CAT_WELCOMING = ujson.loads(read_file.read())
+            self.NEW_CAT_WELCOMING = json.loads(read_file.read())
         # OTHER CLAN #
         self.OTHER_CLAN = None
         with open(f"{resource_dir}other_clan.json", 'r', encoding='ascii') as read_file:
-            self.OTHER_CLAN = ujson.loads(read_file.read())
+            self.OTHER_CLAN = json.loads(read_file.read())
         self.OTHER_CLAN_ALLIES = None
         with open(f"{resource_dir}other_clan_allies.json", 'r', encoding='ascii') as read_file:
-            self.OTHER_CLAN_ALLIES = ujson.loads(read_file.read())
+            self.OTHER_CLAN_ALLIES = json.loads(read_file.read())
         self.OTHER_CLAN_HOSTILE = None
         with open(f"{resource_dir}other_clan_hostile.json", 'r', encoding='ascii') as read_file:
-            self.OTHER_CLAN_HOSTILE = ujson.loads(read_file.read())
+            self.OTHER_CLAN_HOSTILE = json.loads(read_file.read())
         self.DISASTER = None
         with open(f"{resource_dir}disaster.json", 'r', encoding='ascii') as read_file:
-            self.DISASTER = ujson.loads(read_file.read())
+            self.DISASTER = json.loads(read_file.read())
         # sighing heavily as I add general patrols back in
         self.HUNTING_GEN = None
         with open(f"{resource_dir}general/hunting.json", 'r', encoding='ascii') as read_file:
-            self.HUNTING_GEN = ujson.loads(read_file.read())
+            self.HUNTING_GEN = json.loads(read_file.read())
         self.BORDER_GEN = None
         with open(f"{resource_dir}general/border.json", 'r', encoding='ascii') as read_file:
-            self.BORDER_GEN = ujson.loads(read_file.read())
+            self.BORDER_GEN = json.loads(read_file.read())
         self.TRAINING_GEN = None
         with open(f"{resource_dir}general/training.json", 'r', encoding='ascii') as read_file:
-            self.TRAINING_GEN = ujson.loads(read_file.read())
+            self.TRAINING_GEN = json.loads(read_file.read())
         self.MEDCAT_GEN = None
         with open(f"{resource_dir}general/medcat.json", 'r', encoding='ascii') as read_file:
-            self.MEDCAT_GEN = ujson.loads(read_file.read())
+            self.MEDCAT_GEN = json.loads(read_file.read())
 
     # ---------------------------------------------------------------------------- #
     #                                   Handlers                                   #

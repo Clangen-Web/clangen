@@ -9,7 +9,7 @@ HOWEVER
 
 """
 import unittest
-import ujson
+import json
 from json import JSONDecodeError
 
 import os
@@ -33,7 +33,7 @@ def test():
                         continue
                 
                 try:
-                    _ = ujson.loads(contents)
+                    _ = json.loads(contents)
                 except JSONDecodeError as e:
                     print(f"::error file={path}::File {path} is invalid json")
                     print(e)

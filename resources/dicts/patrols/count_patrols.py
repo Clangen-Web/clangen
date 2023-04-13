@@ -1,4 +1,4 @@
-import ujson
+import json
 import collections
 import os
 from os.path import exists as file_exists
@@ -20,11 +20,11 @@ def get_patrol_details(path):
 
     if path == ".\explicit_patrol_art.json":
         with open(path, "r") as read_file:
-            EXPLICIT_PATROL_ART = ujson.loads(read_file.read())
+            EXPLICIT_PATROL_ART = json.loads(read_file.read())
     else:
         try:
             with open(path, "r") as read_file:
-                patrols = ujson.loads(read_file.read())
+                patrols = json.loads(read_file.read())
         except:
             print(f'Something went wrong with {path}')
 

@@ -10,7 +10,7 @@ from random import choice, choices, randint, random, sample
 import pygame
 from scripts.cat.names import names
 
-import ujson
+import json
 import logging
 
 
@@ -446,7 +446,7 @@ def create_outside_cat(Cat, status, backstory, alive=True, thought=None):
 resource_directory = "resources/dicts/"
 PERSONALITY_COMPATIBILITY = None
 with open(f"{resource_directory}personality_compatibility.json", 'r') as read_file:
-    PERSONALITY_COMPATIBILITY = ujson.loads(read_file.read())
+    PERSONALITY_COMPATIBILITY = json.loads(read_file.read())
 
 
 def get_highest_romantic_relation(relationships, exclude_mate=False, potential_mate=False):
@@ -1189,12 +1189,12 @@ def quit(savesettings=False, clearevents=False):
 
 PERMANENT = None
 with open(f"resources/dicts/conditions/permanent_conditions.json", 'r') as read_file:
-    PERMANENT = ujson.loads(read_file.read())
+    PERMANENT = json.loads(read_file.read())
 
 ACC_DISPLAY = None
 with open(f"resources/dicts/acc_display.json", 'r') as read_file:
-    ACC_DISPLAY = ujson.loads(read_file.read())
+    ACC_DISPLAY = json.loads(read_file.read())
 
 SNIPPETS = None
 with open(f"resources/dicts/snippet_collections.json", 'r') as read_file:
-    SNIPPETS = ujson.loads(read_file.read())
+    SNIPPETS = json.loads(read_file.read())

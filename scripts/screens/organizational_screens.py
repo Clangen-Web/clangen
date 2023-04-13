@@ -33,7 +33,7 @@ from scripts.game_structure import image_cache
 from ..datadir import get_data_dir, get_cache_dir
 from ..update import has_update, UpdateChannel, get_latest_version_number
 
-import ujson
+import json
 
 from ..version import get_version_info
 
@@ -475,7 +475,7 @@ class SwitchClanScreen(Screens):
 
 
 with open('resources/gamesettings.json', 'r', encoding='utf-8') as f:
-    settings_dict = ujson.load(f)
+    settings_dict = json.load(f)
 
 
 class SettingsScreen(Screens):
@@ -510,7 +510,7 @@ class SettingsScreen(Screens):
     info_text = ""
     tooltip_text = []
     with open('resources/credits_text.json', 'r', encoding='utf-8') as f:
-        credits_text = ujson.load(f)
+        credits_text = json.load(f)
     for string in credits_text["text"]:
         if string == "{contrib}":
             for contributor in credits_text["contrib"]:
