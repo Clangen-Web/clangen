@@ -1,5 +1,5 @@
 name: pygbag_build
-on: [workflow_dispatch]
+on: [workflow_dispatch, push]
 
 
 jobs:  
