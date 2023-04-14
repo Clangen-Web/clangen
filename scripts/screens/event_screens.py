@@ -4,7 +4,8 @@ from .base_screens import Screens, cat_profiles
 import pygame
 from scripts.events import events_class
 from scripts.utility import get_living_clan_cat_count, get_text_box_theme, scale
-from scripts.game_structure.image_button import IDImageButton, UIImageButton
+from scripts.game_structure.ui_button import UIButton
+from scripts.game_structure.image_button import IDImageButton
 from scripts.game_structure.game_essentials import game, screen_x, screen_y, MANAGER
 from ..cat.cats import Cat
 from ..game_structure import image_cache
@@ -261,7 +262,7 @@ class EventsScreen(Screens):
         if game.clan.age != 1:
             self.clan_age.set_text(f'Clan age: {game.clan.age} moons')
 
-        self.timeskip_button = UIImageButton(scale(pygame.Rect((620, 436), (360, 60))), "", object_id="#timeskip_button"
+        self.timeskip_button = UIButton(scale(pygame.Rect((620, 436), (360, 60))), "", object_id="#timeskip_button"
                                              , manager=MANAGER)
 
         # commenting out for now as there seems to be a consensus that it isn't needed anymore?
@@ -273,31 +274,31 @@ class EventsScreen(Screens):
         #                                                              "Close Clan Borders")
 
         # Sets up the buttons to switch between the event types.
-        self.all_events_button = UIImageButton(
+        self.all_events_button = UIButton(
             scale(pygame.Rect((120, 570), (300, 60))),
             "",
             object_id="#all_events_button", manager=MANAGER)
-        self.ceremonies_events_button = UIImageButton(
+        self.ceremonies_events_button = UIButton(
             scale(pygame.Rect((120, 672), (300, 60))),
             "",
             object_id="#ceremony_events_button", manager=MANAGER)
-        self.birth_death_events_button = UIImageButton(
+        self.birth_death_events_button = UIButton(
             scale(pygame.Rect((120, 772), (300, 60))),
             "",
             object_id="#birth_death_events_button", manager=MANAGER)
-        self.relationship_events_button = UIImageButton(
+        self.relationship_events_button = UIButton(
             scale(pygame.Rect((120, 872), (300, 60))),
             "",
             object_id="#relationship_events_button")
-        self.health_events_button = UIImageButton(
+        self.health_events_button = UIButton(
             scale(pygame.Rect((120, 972), (300, 60))),
             "",
             object_id="#health_events_button", manager=MANAGER)
-        self.other_clans_events_button = UIImageButton(
+        self.other_clans_events_button = UIButton(
             scale(pygame.Rect((120, 1072), (300, 60))),
             "",
             object_id="#other_clans_events_button", manager=MANAGER)
-        self.misc_events_button = UIImageButton(
+        self.misc_events_button = UIButton(
             scale(pygame.Rect((120, 1172), (300, 60))),
             "",
             object_id="#misc_events_button", manager=MANAGER)

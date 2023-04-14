@@ -179,15 +179,10 @@ async def main():
             object_id="#dev_watermark"
         )
 
-    game.rpc = _DiscordRPC("1076277970060185701", daemon=True)
-    game.rpc.start()
-    game.rpc.start_rpc.set()
-
 
     cursor_img = pygame.image.load('resources/images/cursor.png').convert_alpha()
     cursor = pygame.cursors.Cursor((9,0), cursor_img)
     disabled_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_ARROW)
-
 
     while True:
         time_delta = clock.tick(30) / 1000.0

@@ -14,7 +14,8 @@ from pygame_gui.elements import UIWindow
 from scripts.datadir import get_save_dir, get_cache_dir
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game, screen_x, screen_y
-from scripts.game_structure.image_button import UIImageButton, UITextBoxTweaked
+from scripts.game_structure.ui_button import UIButton
+from scripts.game_structure.image_button import UITextBoxTweaked
 from scripts.progress_bar_updater import UIUpdateProgressBar
 from scripts.update import self_update, UpdateChannel, get_latest_version_number
 from scripts.utility import scale, quit
@@ -42,7 +43,7 @@ class SaveCheck(UIWindow):
 
         if (self.isMainMenu):
             self.mm_btn.disable()
-            self.main_menu_button = UIImageButton(
+            self.main_menu_button = UIButton(
                 scale(pygame.Rect((146, 310), (305, 60))),
                 "",
                 object_id="#main_menu_button",
@@ -50,7 +51,7 @@ class SaveCheck(UIWindow):
             )
             self.message = f"Would you like to save your game before exiting to the Main Menu? If you don't, progress may be lost!"
         else:
-            self.main_menu_button = UIImageButton(
+            self.main_menu_button = UIButton(
                 scale(pygame.Rect((146, 310), (305, 60))),
                 "",
                 object_id="#smallquit_button",
@@ -66,7 +67,7 @@ class SaveCheck(UIWindow):
             container=self
         )
 
-        self.save_button = UIImageButton(scale(pygame.Rect((186, 230), (228, 60))),
+        self.save_button = UIButton(scale(pygame.Rect((186, 230), (228, 60))),
                                          "",
                                          object_id="#save_button",
                                          container=self
@@ -86,7 +87,7 @@ class SaveCheck(UIWindow):
             container=self)
         self.save_button_saving_state.hide()
 
-        self.back_button = UIImageButton(
+        self.back_button = UIButton(
             scale(pygame.Rect((540, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
@@ -151,20 +152,20 @@ class DeleteCheck(UIWindow):
             container=self
         )
 
-        self.delete_it_button = UIImageButton(
+        self.delete_it_button = UIButton(
             scale(pygame.Rect((142, 200), (306, 60))),
             "delete",
             object_id="#delete_it_button",
             container=self
         )
-        self.go_back_button = UIImageButton(
+        self.go_back_button = UIButton(
             scale(pygame.Rect((142, 270), (306, 60))),
             "go back",
             object_id="#go_back_button",
             container=self
         )
 
-        self.back_button = UIImageButton(
+        self.back_button = UIButton(
             scale(pygame.Rect((540, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
@@ -230,13 +231,13 @@ class GameOver(UIWindow):
             container=self
         )
 
-        self.begin_anew_button = UIImageButton(
+        self.begin_anew_button = UIButton(
             scale(pygame.Rect((50, 230), (222, 60))),
             "",
             object_id="#begin_anew_button",
             container=self
         )
-        self.not_yet_button = UIImageButton(
+        self.not_yet_button = UIButton(
             scale(pygame.Rect((318, 230), (222, 60))),
             "",
             object_id="#not_yet_button",
@@ -271,7 +272,7 @@ class ChangeCatName(UIWindow):
                          resizable=False)
         game.switches['window_open'] = True
         self.the_cat = cat
-        self.back_button = UIImageButton(
+        self.back_button = UIButton(
             scale(pygame.Rect((740, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
@@ -289,7 +290,7 @@ class ChangeCatName(UIWindow):
                                                           manager=MANAGER,
                                                           container=self)
 
-        self.done_button = UIImageButton(scale(pygame.Rect((323, 270), (154, 60))), "",
+        self.done_button = UIButton(scale(pygame.Rect((323, 270), (154, 60))), "",
                                          object_id="#done_button",
                                          manager=MANAGER,
                                          container=self)
@@ -302,26 +303,26 @@ class ChangeCatName(UIWindow):
             manager=MANAGER,
             container=self)
 
-        self.random_prefix = UIImageButton(scale(pygame.Rect((245 + x_pos, 97 + y_pos), (68, 68))), "",
+        self.random_prefix = UIButton(scale(pygame.Rect((245 + x_pos, 97 + y_pos), (68, 68))), "",
                                            object_id="#random_dice_button",
                                            manager=MANAGER,
                                            container=self,
                                            tool_tip_text='Randomize the prefix')
 
-        self.random_suffix = UIImageButton(scale(pygame.Rect((563 + x_pos, 97 + y_pos), (68, 68))), "",
+        self.random_suffix = UIButton(scale(pygame.Rect((563 + x_pos, 97 + y_pos), (68, 68))), "",
                                            object_id="#random_dice_button",
                                            manager=MANAGER,
                                            container=self,
                                            tool_tip_text='Randomize the suffix')
 
         # 636
-        self.toggle_spec_block_on = UIImageButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
+        self.toggle_spec_block_on = UIButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
                                                   object_id="#unchecked_checkbox",
                                                   tool_tip_text=f"Remove the cat's special suffix",
                                                   manager=MANAGER,
                                                   container=self)
 
-        self.toggle_spec_block_off = UIImageButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
+        self.toggle_spec_block_off = UIButton(scale(pygame.Rect((405 + x_pos, 160 + y_pos), (68, 68))), "",
                                                    object_id="#checked_checkbox",
                                                    tool_tip_text="Re-enable the cat's special suffix", manager=MANAGER,
                                                    container=self)
@@ -441,7 +442,7 @@ class SpecifyCatGender(UIWindow):
                          resizable=False)
         game.switches['window_open'] = True
         self.the_cat = cat
-        self.back_button = UIImageButton(
+        self.back_button = UIButton(
             scale(pygame.Rect((740, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
@@ -462,7 +463,7 @@ class SpecifyCatGender(UIWindow):
                                                             manager=MANAGER,
                                                             container=self)
 
-        self.done_button = UIImageButton(scale(pygame.Rect((323, 270), (154, 60))), "",
+        self.done_button = UIButton(scale(pygame.Rect((323, 270), (154, 60))), "",
                                          object_id="#done_button",
                                          manager=MANAGER,
                                          container=self)
@@ -523,7 +524,7 @@ class UpdateWindow(UIWindow):
         UpdateChannel(get_version_info().release_channel), self.progress_bar, announce_restart_callback))
         self.update_thread.start()
 
-        self.cancel_button = UIImageButton(
+        self.cancel_button = UIButton(
             scale(pygame.Rect((400, 230), (156, 60))),
             "",
             object_id="#cancel_button",
@@ -573,7 +574,7 @@ class UpdateAvailablePopup(UIWindow):
         game.switches['window_open'] = True
         self.last_screen = last_screen
 
-        self.begin_update_title = UIImageButton(
+        self.begin_update_title = UIButton(
             scale(pygame.Rect((195, 30), (400, 81))),
             "",
             object_id="#new_update_button",
@@ -607,8 +608,8 @@ class UpdateAvailablePopup(UIWindow):
             container=self
         )
 
-        self.box_unchecked = UIImageButton(scale(pygame.Rect((15, 366), (68, 68))), "", object_id="#unchecked_checkbox", container=self)
-        self.box_checked = UIImageButton(scale(pygame.Rect((15, 366), (68, 68))), "", object_id="#checked_checkbox", container=self)
+        self.box_unchecked = UIButton(scale(pygame.Rect((15, 366), (68, 68))), "", object_id="#unchecked_checkbox", container=self)
+        self.box_checked = UIButton(scale(pygame.Rect((15, 366), (68, 68))), "", object_id="#checked_checkbox", container=self)
         self.box_text = UITextBoxTweaked(
             f"Don't ask again",
             scale(pygame.Rect((78, 370), (250, -1))),
@@ -617,21 +618,21 @@ class UpdateAvailablePopup(UIWindow):
             container=self
         )
 
-        self.continue_button = UIImageButton(
+        self.continue_button = UIButton(
             scale(pygame.Rect((556, 370), (204, 60))),
             "",
             object_id="#continue_button_small",
             container=self
         )
 
-        self.cancel_button = UIImageButton(
+        self.cancel_button = UIButton(
             scale(pygame.Rect((374, 370), (156, 60))),
             "",
             object_id="#cancel_button",
             container=self
         )
 
-        self.close_button = UIImageButton(
+        self.close_button = UIButton(
             scale(pygame.Rect((740, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
@@ -727,7 +728,7 @@ class ChangelogPopup(UIWindow):
 
         self.changelog_text.disable()
 
-        self.close_button = UIImageButton(
+        self.close_button = UIButton(
             scale(pygame.Rect((940, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
