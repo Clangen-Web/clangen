@@ -202,39 +202,7 @@ class StartScreen(Screens):
                                              object_id="#update_button", manager=MANAGER)
         self.update_button.visible = 0
 
-        try:
-            global has_checked_for_update
-            global update_available
-            if not get_version_info().is_source_build and not get_version_info().is_itch and get_version_info().upstream.lower() == "Thlumyn/clangen".lower() and game.settings['check_for_updates'] and not has_checked_for_update:
-                if has_update(UpdateChannel(get_version_info().release_channel)):
-                    update_available = True
-                    show_popup = True
-                    if os.path.exists(f"{get_cache_dir()}/suppress_update_popup"):
-                        with open(f"{get_cache_dir()}/suppress_update_popup", 'r') as read_file:
-                            if read_file.readline() == get_latest_version_number():
-                                show_popup = False
-
-                    if show_popup:
-                        UpdateAvailablePopup(game.switches['last_screen'], show_checkbox=True)
-
-                has_checked_for_update = True
-
-            if update_available:
-                self.update_button.visible = 1
-        except (ConnectionError, HTTPError):
-            logger.exception("Failed to check for update")
-
-        if game.settings['show_changelog']:
-            show_changelog = True
-            if os.path.exists(f"{get_cache_dir()}/changelog_popup_shown"):
-                with open(f"{get_cache_dir()}/changelog_popup_shown") as read_file:
-                    if read_file.readline() == get_version_info().version_number:
-                        show_changelog = False
-
-            if show_changelog:
-                with open(f"{get_cache_dir()}/changelog_popup_shown", 'w') as write_file:
-                    write_file.write(get_version_info().version_number)
-                ChangelogPopup(game.switches['last_screen'])
+        
 
         self.warning_label = pygame_gui.elements.UITextBox(
             "Warning: this game includes some mild descriptions of gore.",
