@@ -33,7 +33,7 @@ Add language:
     Supported characters:
         [A-Za-z0-9] ! @ # $ % ^ & * ( ) - _ = + , . < > / ? { } | \ [ ] ~ ` ; :
         ¡ ¿ ± µ × ÷
-        Ç ç ñ
+        Ç ç n
         á â ã ä æ 
         é ê ë 
         í 
