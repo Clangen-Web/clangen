@@ -79,8 +79,8 @@ import scripts.game_structure.image_button
 pygame.font.init()
 DEBUG = False
 FONT = pygame.font.SysFont(None, 16)
-# COLOR = (239, 229, 206)
-COLOR = (239, 229, 0)
+COLOR = (239, 229, 206)
+# COLOR = (239, 229, 0)
 class _Language():
     """Class for rendering button text in other languages, from languages/.*/buttons.json"""
     LANGUAGE = "en"
