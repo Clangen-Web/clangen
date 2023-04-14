@@ -64,10 +64,10 @@ class StartScreen(Screens):
                 subprocess.Popen(['xdg-open', event.link_target])
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             screens = {
-                self.continue_button: 'clan screen',
-                self.switch_clan_button: 'switch clan screen',
-                self.new_clan_button: 'make clan screen',
-                self.settings_button: 'settings screen',
+                self.continue_button.button: 'clan screen',
+                self.switch_clan_button.button: 'switch clan screen',
+                self.new_clan_button.button: 'make clan screen',
+                self.settings_button.button: 'settings screen',
             }
             if event.ui_element in screens:
                 self.change_screen(screens[event.ui_element])
