@@ -100,7 +100,7 @@ class _Language():
     dict_en = json.load(open("languages/english/buttons.json", "r", encoding="utf-8"))
     # dict_pt = json.load(open("languages/portuguese/buttons.json", "r", encoding="utf-8"))
     @staticmethod
-    def check(object_id: str) -> str:
+    def check(object_id: Union[str, None]) -> str:
         """Checks if the object_id is in the dictionary, and returns the appropriate string (if found)
 
         Args:
@@ -111,7 +111,7 @@ class _Language():
             default: ''
         """
         if object_id == None:
-            raise ValueError("object_id cannot be None")
+            return ''
         if _Language.LANGUAGE == "en":
             search = _Language.dict_en.get(object_id)
         elif _Language.LANGUAGE == "pt":
@@ -566,6 +566,8 @@ class RectButton():
             if not rotate:
                 length += 1
                 odd = True
+        if length < 0:
+            length = 0
         surface = pygame.Surface((length, 6), pygame.SRCALPHA)
         surface = surface.convert_alpha()
         # outline
