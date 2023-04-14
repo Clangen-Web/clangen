@@ -78,7 +78,7 @@ import scripts.game_structure.image_button
 
 pygame.font.init()
 DEBUG = False
-FONT = pygame.font.SysFont(None, 16)
+FONT = pygame.font.SysFont(None, 24)
 COLOR = (239, 229, 206)
 # COLOR = (239, 229, 0)
 class _Language():
