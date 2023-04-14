@@ -10,7 +10,7 @@ from .base_screens import Screens, cat_profiles
 
 from scripts.cat.cats import Cat
 from scripts.game_structure.ui_button import UIButton
-from scripts.game_structure.image_button import UITextBoxTweaked
+from scripts.game_structure.image_button import UITextBoxTweaked, UISpriteButton
 from scripts.utility import get_text_box_theme, update_sprite, scale, get_med_cats
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game, screen, screen_x, screen_y, MANAGER
@@ -103,15 +103,12 @@ class ClanScreen(Screens):
                 if i > self.max_sprites_displayed:
                     break
 
-                try:
-                    self.cat_buttons.append(
-                        UISpriteButton(scale(pygame.Rect(tuple(Cat.all_cats[x].placement), (100, 100))),
-                                       Cat.all_cats[x].big_sprite,
-                                       cat_id=x,
-                                       starting_height=i)
-                    )
-                except:
-                    print(f"ERROR: placing {Cat.all_cats[x].name}\'s sprite on Clan page")
+                self.cat_buttons.append(
+                    UISpriteButton(scale(pygame.Rect(tuple(Cat.all_cats[x].placement), (100, 100))),
+                                    Cat.all_cats[x].big_sprite,
+                                    cat_id=x,
+                                    starting_height=i)
+                )
                     
         # Den Labels
         # Redo the locations, so that it uses layout on the clan page
