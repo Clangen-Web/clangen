@@ -29,9 +29,9 @@ from scripts.datadir import get_log_dir, setup_data_dir
 from scripts.version import get_version_info, VERSION_NAME
 
 async def main():
-    directory = os.path.dirname(__file__)
-    if directory:
-        os.chdir(directory)
+    # directory = os.path.dirname(__file__)
+    # if directory:
+    #     os.chdir(directory)
 
 
     if os.path.exists("auto-updated"):
