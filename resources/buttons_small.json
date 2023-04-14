@@ -2755,7 +2755,7 @@
         },
         "font":
         {
-        "name": "notosans",
+        "name": "firacode",
         "size": "15"
         },
         "misc":
@@ -4099,7 +4099,7 @@
         },
         "font":
         {
-        "name": "notosans",
+        "name": "firacode",
         "size": "13"
         },
         "misc":

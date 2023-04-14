@@ -7,7 +7,7 @@
         },
         "font":
         {
-            "name": "notosans",
+            "name": "firacode",
             "size": "30"
         },
         "misc":
@@ -21,7 +21,7 @@
     "#text_box_22_dark": {
         "prototype": "#default_dark",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": 22
         }
     },
@@ -62,7 +62,7 @@
     "#text_box_26_dark": {
         "prototype": "#default_dark",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": 26
         }
     },
@@ -86,7 +86,7 @@
     "#text_box_30_dark": {
         "prototype": "#default_dark",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": 30
         }
     },
@@ -140,7 +140,7 @@
     "#text_box_34_dark": {
         "prototype": "#default_dark",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": 34
         }
     },
@@ -162,7 +162,7 @@
     "#text_box_40_dark": {
         "prototype": "#default_dark",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": 40
         }
     },

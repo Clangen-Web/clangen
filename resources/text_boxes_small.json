@@ -14,7 +14,7 @@
             "padding": "(0,0)"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "15"
         }
     },
@@ -24,7 +24,7 @@
             "normal_text": "#EFE5CE88"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "18",
             "bold": "1"
         },
@@ -49,7 +49,7 @@
             "border_width": "0"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "13"
         }
     },
@@ -62,7 +62,7 @@
             "selected_text": "#AC9D72"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "15"
         },
         "misc": {
@@ -74,7 +74,7 @@
     "#text_box_14": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "7"
         }
     },
@@ -90,7 +90,7 @@
     "#text_box_22": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "11"
         }
     },
@@ -143,7 +143,7 @@
     "#text_box_26": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "13"
         }
     },
@@ -180,7 +180,7 @@
     "#text_box_30": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "15"
         }
     },
@@ -190,7 +190,7 @@
             "normal_text": "#222222"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "12"
         }
     },
@@ -203,7 +203,7 @@
             "text_horiz_alignment": "center"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "20",
             "bold": "1"
         }
@@ -217,7 +217,7 @@
             "normal_text": "#222222"
         },
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "12"
         }
     },
@@ -293,7 +293,7 @@
     "#text_box_34": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "17"
         }
     },
@@ -319,7 +319,7 @@
     "#text_box_40": {
         "prototype": "#text_box",
         "font": {
-            "name": "notosans",
+            "name": "firacode",
             "size": "20"
         }
     },
