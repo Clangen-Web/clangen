@@ -201,7 +201,7 @@ class Screens():
         if game.settings["moons and seasons"]:
             self.menu_buttons['stats'].dynamic_dimensions_orig_top_left = scale_dimentions((1388, 190))
             self.menu_buttons['stats']._rect = scale(pygame.Rect(1388, 190, 162, 60))
-            self.menu_buttons['stats'].blit_data[1] = scale(pygame.Rect(1388, 190, 162, 60))
+            self.menu_buttons['stats'].image.blit_data[1] = scale(pygame.Rect(1388, 190, 162, 60))
             self.menu_buttons['stats'].rebuild()
             self.menu_buttons['moons_n_seasons_arrow'].kill()
             self.menu_buttons['moons_n_seasons'].kill()
@@ -217,7 +217,7 @@ class Screens():
             self.menu_buttons['moons_n_seasons_arrow'].hide()
             self.menu_buttons['stats'].dynamic_dimensions_orig_top_left = scale_dimentions((50, 120))
             self.menu_buttons['stats']._rect = scale(pygame.Rect(50, 120, 162, 60))
-            self.menu_buttons['stats'].blit_data[1] = scale(pygame.Rect(50, 120, 162, 60))
+            self.menu_buttons['stats'].image.blit_data[1] = scale(pygame.Rect(50, 120, 162, 60))
             self.menu_buttons['stats'].rebuild()
     
     # open moons and seasons UI (AKA wide version)    
