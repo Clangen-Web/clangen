@@ -278,6 +278,8 @@ class Game():
             write_file.write(data)
         self.settings_changed = False
 
+        
+
     def load_settings(self):
         """ Load settings that user has saved from previous use """
         with open(get_save_dir() + '/settings.txt', 'r') as read_file:

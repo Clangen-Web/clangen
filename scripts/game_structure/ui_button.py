@@ -32,7 +32,7 @@ Add language:
     increase button size.
     Supported characters:
         [A-Za-z0-9] ! @ # $ % ^ & * ( ) - _ = + , . < > / ? { } | \ [ ] ~ ` ; :
-        ¡ ¿ ± µ × ÷
+        ¡ ¿ ± µ ÷
         Ç ç ñ
         á â ã ä æ 
         é ê ë 
@@ -68,22 +68,28 @@ Change default color palette(s):
 """
 import pygame
 import pygame_gui
-import json
+import ujson
 import warnings
 import re
+import i18n
 from typing import Union
 import scripts.game_structure.image_button
 
 # pylint: disable=too-many-arguments, line-too-long
 
 pygame.font.init()
-DEBUG = False
-FONT = pygame.font.SysFont(None, 24)
+DEBUG = True
+FONT = pygame.font.Font('resources/fonts/clangen.ttf', 16)
 COLOR = (239, 229, 206)
-# COLOR = (239, 229, 0)
+PLATFORM = None
+
 class _Language():
     """Class for rendering button text in other languages, from languages/.*/buttons.json"""
-    LANGUAGE = "en"
+    LANGUAGE = "en-us"
+    i18n.load_path.append('languages/buttons')
+    i18n.set('file_format', 'json')
+    i18n.set('locale', LANGUAGE)
+    # global dictionary for symbol lookup
     dict_global = {
         "#cat_tab_3_blank_button": "",
         "#cat_tab_4_blank_button": "",
@@ -96,9 +102,29 @@ class _Language():
         "#patrol_next_page": "{ARROW_RIGHT_SHORT}",
         "#arrow_right_button": "{ARROW_RIGHT_SHORT}",
         "#arrow_left_button": "{ARROW_LEFT_SHORT}",
+        "#your_clan_button": "{YOUR_CLAN}",
+        "#outside_clan_button": "{OUTSIDE_CLAN}",
+        "#starclan_button": "{STARCLAN}",
+        "#unknown_residence_button": "{UNKNOWN_RESIDENCE}",
+        "#dark_forest_button": "{DARK_FOREST}",
+        "#leader_ceremony_button": "{LEADER_CEREMONY}",
+        "#mediation_button": "{MEDIATION}",
+        "#exit_window_button": "{EXIT}",
     }
-    dict_en = json.load(open("languages/english/buttons.json", "r", encoding="utf-8"))
-    # dict_pt = json.load(open("languages/portuguese/buttons.json", "r", encoding="utf-8"))
+
+    @staticmethod
+    def set_language(language: str) -> None:
+        """Sets the language to be used for button text
+
+        Args:
+            language (str): The language to use, must be in languages/
+        """
+        supported_languages = ["en-us", "pt-br"]
+        if language not in supported_languages:
+            raise ValueError("Language not supported")
+        _Language.LANGUAGE = language
+        i18n.set('locale', language)
+
     @staticmethod
     def check(object_id: Union[str, None]) -> str:
         """Checks if the object_id is in the dictionary, and returns the appropriate string (if found)
@@ -110,19 +136,22 @@ class _Language():
             str: The found language string
             default: ''
         """
-        if object_id == None:
-            return ''
-        if _Language.LANGUAGE == "en":
-            search = _Language.dict_en.get(object_id)
-        elif _Language.LANGUAGE == "pt":
-            search = _Language.dict_pt.get(object_id)
-        if search != None:
-            return search
-        # backup for global
+        if object_id is None:
+            return '' # dev testing, can either replace following line or be deleted
+            raise ValueError("object_id cannot be None")
+        search_term = f"buttons.{object_id}"
+        translated = i18n.t(search_term, locale=_Language.LANGUAGE)
+        if translated != search_term:
+            return translated
+        # backup search for global
         search = _Language.dict_global.get(object_id)
         if search != None:
             return search
-        print('not found! ' + object_id)
+        if _Language.LANGUAGE == 'en-us':
+            warnings.warn('not found! ' + object_id)
+        else:
+            warnings.warn(f'Translation for "{object_id}" in {_Language.LANGUAGE} not found! Using fallback language "en-us"')
+            return i18n.t(search_term, locale='en-us')
         return ''
 
 class _Symbol():
@@ -148,6 +177,7 @@ class _Symbol():
         _Symbol._custom["{DARK_FOREST}"] = _Symbol.load("resources/images/symbols/dark_forest.png")
         _Symbol._custom["{LEADER_CEREMONY}"] = _Symbol.load("resources/images/symbols/leader_ceremony.png")
         _Symbol._custom["{MEDIATION}"] = _Symbol.load("resources/images/symbols/mediation.png")
+        _Symbol._custom["{EXIT}"] = _Symbol.load("resources/images/symbols/exit.png")
     
     @staticmethod
     def _populate() -> None:
@@ -166,6 +196,7 @@ class _Symbol():
         _Symbol._custom["{DARK_FOREST}"] = _Symbol.generate_surface((16, 16))
         _Symbol._custom["{LEADER_CEREMONY}"] = _Symbol.generate_surface((16, 16))
         _Symbol._custom["{MEDIATION}"] =_Symbol.generate_surface((16, 16))
+        _Symbol._custom["{EXIT}"] = _Symbol.generate_surface((10, 10))
 
     @staticmethod
     def load(image_path: str) -> pygame.Surface:
@@ -199,7 +230,7 @@ class _Symbol():
 
 class _Style():
     """Class for parsing resources/styles.json, and determining custom styles from the #object_id"""
-    _styles = json.load(open("resources/styles.json", "r", encoding="utf-8"))
+    _styles = ujson.load(open("resources/styles.json", "r", encoding="utf-8"))
     styles_round = _styles["rounded"]
     styles_hanging = _styles["hanging"]
     styles_shadow = _styles["shadow"]
@@ -356,7 +387,7 @@ class UIButton(scripts.game_structure.image_button.UISpriteButton):
         self.button = CatButton(relative_rect, visible=visible,
                                 starting_height=starting_height, 
                                 manager=manager, tool_tip_text=tool_tip_text,
-                                internal=self)
+                                internal=self, container=container)
         self.visible = visible
     def __setattr__(self, name, value):
         self.__dict__[name] = value
@@ -377,7 +408,6 @@ class UIButton(scripts.game_structure.image_button.UISpriteButton):
         self.image.rebuild()
         self.button.rebuild()
         
-
 class CatButton(pygame_gui.elements.UIButton):
     """TODO: document"""
 
@@ -387,6 +417,7 @@ class CatButton(pygame_gui.elements.UIButton):
                  starting_height=1,
                  manager=None,
                  tool_tip_text=None,
+                 container=None,
                  internal=None) -> None:
         """TODO: document"""
         self.rounded_corners = internal.rounded_corners
@@ -399,7 +430,8 @@ class CatButton(pygame_gui.elements.UIButton):
                          visible=visible,
                          starting_height=starting_height,
                          manager=manager,
-                         tool_tip_text=tool_tip_text)
+                         tool_tip_text=tool_tip_text,
+                         container=container)
     def on_hovered(self):
         """TODO: document"""
         self.hover = True
@@ -492,7 +524,10 @@ class CatButton(pygame_gui.elements.UIButton):
         self.internal.image.set_image(pygame.transform.scale(sprite, self.relative_rect.size))
         super().on_unhovered()
 
-_Symbol._populate()
+if PLATFORM == "web" and DEBUG:
+    _Symbol._populate()
+else:
+    _Symbol.__init__()
 
 class RectButton():
     """TODO: document"""
@@ -566,7 +601,7 @@ class RectButton():
             if not rotate:
                 length += 1
                 odd = True
-        if length < 0:
+        if length <= 0:
             length = 0
         surface = pygame.Surface((length, 6), pygame.SRCALPHA)
         surface = surface.convert_alpha()

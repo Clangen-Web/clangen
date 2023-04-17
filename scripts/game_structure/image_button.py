@@ -346,4 +346,3 @@ class IDImageButton(UIImageButton):
         # This button will auto-disable if no ids are entered.
         if not self.ids:
             self.disable()
-
