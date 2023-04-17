@@ -269,6 +269,9 @@ class Game():
         """ Load settings that user has saved from previous use """
         settings_data = localStorage.getItem('settings')
 
+        if settings_data == None:
+            settings_data = ''
+
         lines = settings_data.split(
             "\n"
         )  # Splits text file into singular lines, each line containing one setting
