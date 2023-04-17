@@ -1,6 +1,6 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [ 
         {
             "name": "Main",
             "type": "python",
@@ -16,6 +16,17 @@
             "program": "main.py",
             "console": "integratedTerminal",
             "justMyCode": false
+        },
+        {
+            "name": "Web",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pygbag .",
+            "serverReadyAction": {
+                "pattern": "\\bServing HTTP on 127\\.0\\.0\\.1 port (\\d+)",
+                "uriFormat": "http://localhost:%s/#debug",
+                "action": "openExternally"
+            },
         }
     ]
 }
