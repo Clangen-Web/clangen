@@ -68,7 +68,7 @@ Change default color palette(s):
 """
 import pygame
 import pygame_gui
-import ujson
+import json
 import warnings
 import re
 import i18n
@@ -230,7 +230,7 @@ class _Symbol():
 
 class _Style():
     """Class for parsing resources/styles.json, and determining custom styles from the #object_id"""
-    _styles = ujson.load(open("resources/styles.json", "r", encoding="utf-8"))
+    _styles = json.load(open("resources/styles.json", "r", encoding="utf-8"))
     styles_round = _styles["rounded"]
     styles_hanging = _styles["hanging"]
     styles_shadow = _styles["shadow"]
