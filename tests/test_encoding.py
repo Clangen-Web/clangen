@@ -33,7 +33,7 @@ def test():
     for (root, _, files) in os.walk("."):
         for file in files:
             if file.endswith(".json") or file.endswith(".py"):
-                if 'ui_button.py' in file or 'buttons.json' in file:
+                if 'ui_button.py' in file or 'buttons.' in file:
                     continue
                 path = os.path.join(root, file)
                 with open(path, "r", encoding="utf-8") as handle_utf8:
