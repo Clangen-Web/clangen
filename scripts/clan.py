@@ -14,8 +14,12 @@ import os
 
 import pygame
 
+import platform
+
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.datadir import get_save_dir
+
+from scripts.platform import localStorage
 
 import json
 
@@ -777,6 +781,7 @@ class Clan():
         with open(get_save_dir() + '/currentclan.txt', 'w',
                   encoding='utf-8') as write_file:
             write_file.write(self.name)
+        localStorage.setItem('currentclan', self.name)
             
     def save_clan_settings(self):
         with open(get_save_dir() + f'/{self.name}/clan_settings.json', 'w',

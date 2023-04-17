@@ -7,7 +7,7 @@ import json
 import os
 from ast import literal_eval
 
-import platform
+from scripts.platform import localStorage
 
 pygame.init()
 
@@ -276,7 +276,7 @@ class Game():
         data = ''.join(f"{s}:{self.settings[s]}" + "\n"
                        for s in self.settings.keys())
 
-        platform.window.localStorage.setItem('settings', data)
+        localStorage.setItem('settings', data)
 
         self.settings_changed = False
 
@@ -284,7 +284,7 @@ class Game():
 
     def load_settings(self):
         """ Load settings that user has saved from previous use """
-        settings_data = platform.window.localStorage.getItem('settings')
+        settings_data = localStorage.getItem('settings')
 
         lines = settings_data.split(
             "\n"
