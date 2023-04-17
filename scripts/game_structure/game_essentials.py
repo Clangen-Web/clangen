@@ -7,6 +7,8 @@ import json
 import os
 from ast import literal_eval
 
+import platform
+
 pygame.init()
 
 
@@ -274,16 +276,15 @@ class Game():
         data = ''.join(f"{s}:{self.settings[s]}" + "\n"
                        for s in self.settings.keys())
 
-        with open(get_save_dir() + '/settings.txt', 'w') as write_file:
-            write_file.write(data)
+        platform.window.localStorage.setItem('settings', data)
+
         self.settings_changed = False
 
         
 
     def load_settings(self):
         """ Load settings that user has saved from previous use """
-        with open(get_save_dir() + '/settings.txt', 'r') as read_file:
-            settings_data = read_file.read()
+        settings_data = platform.window.localStorage.getItem('settings')
 
         lines = settings_data.split(
             "\n"
