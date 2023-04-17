@@ -652,13 +652,13 @@ class MakeClanScreen(Screens):
         )
 
         # Create all the elements.
-        self.elements['classic_mode_button'] = UIButton(scale(pygame.Rect((218, 480), (264, 60))), "",
+        self.elements['classic_mode_button'] = UIButton(scale(pygame.Rect((218, 480), (264, 60))), "Classic",
                                                              object_id="#classic_mode_button",
                                                              manager=MANAGER)
-        self.elements['expanded_mode_button'] = UIButton(scale(pygame.Rect((188, 640), (324, 68))), "",
+        self.elements['expanded_mode_button'] = UIButton(scale(pygame.Rect((188, 640), (324, 68))), "Expanded",
                                                               object_id="#expanded_mode_button",
                                                               manager=MANAGER)
-        self.elements['cruel_mode_button'] = UIButton(scale(pygame.Rect((200, 800), (300, 60))), "",
+        self.elements['cruel_mode_button'] = UIButton(scale(pygame.Rect((200, 800), (300, 60))), "Cruel Season",
                                                            object_id="#cruel_mode_button",
                                                            manager=MANAGER)
         self.elements['previous_step'] = UIButton(scale(pygame.Rect((506, 1240), (294, 60))), "",
@@ -785,7 +785,7 @@ class MakeClanScreen(Screens):
                                                                       "#text_box_30_horizcenter"),
                                                                   manager=MANAGER)
 
-        self.elements['select_cat'] = UIButton(scale(pygame.Rect((468, 696), (664, 104))), "",
+        self.elements['select_cat'] = UIButton(scale(pygame.Rect((468, 696), (664, 104))), "Grant this cat their nine lives",
                                                     object_id="#nine_lives_button", visible=False, manager=MANAGER)
         # Error message, to appear if you can't choose that cat.
         self.elements['error_message'] = pygame_gui.elements.UITextBox(
@@ -827,7 +827,7 @@ class MakeClanScreen(Screens):
                                                                       "#text_box_30_horizcenter"),
                                                                   manager=MANAGER)
 
-        self.elements['select_cat'] = UIButton(scale(pygame.Rect((418, 696), (768, 104))), "",
+        self.elements['select_cat'] = UIButton(scale(pygame.Rect((418, 696), (768, 104))), "This cat will support the leader",
                                                     object_id="#support_leader_button", visible=False, manager=MANAGER)
         # Error message, to appear if you can't choose that cat.
         self.elements['error_message'] = pygame_gui.elements.UITextBox(
@@ -871,7 +871,7 @@ class MakeClanScreen(Screens):
                                                                   manager=MANAGER)
 
         self.elements['select_cat'] = UIButton(scale(pygame.Rect((520, 684), (612, 116))),
-                                                    "",
+                                                    "This cat will aid the clan",
                                                     object_id="#aid_clan_button",
                                                     visible=False,
                                                     manager=MANAGER)
@@ -950,13 +950,13 @@ class MakeClanScreen(Screens):
         self.elements['done_button'].disable()
 
         # Biome buttons
-        self.elements['forest_biome'] = UIButton(scale(pygame.Rect((392, 200), (200, 92))), "",
+        self.elements['forest_biome'] = UIButton(scale(pygame.Rect((392, 200), (200, 92))), "Forest",
                                                       object_id="#forest_biome_button", manager=MANAGER)
-        self.elements['mountain_biome'] = UIButton(scale(pygame.Rect((608, 200), (212, 92))), "",
+        self.elements['mountain_biome'] = UIButton(scale(pygame.Rect((608, 200), (212, 92))), "Mountainous",
                                                         object_id="#mountain_biome_button", manager=MANAGER)
-        self.elements['plains_biome'] = UIButton(scale(pygame.Rect((848, 200), (176, 92))), "",
+        self.elements['plains_biome'] = UIButton(scale(pygame.Rect((848, 200), (176, 92))), "Plains",
                                                       object_id="#plains_biome_button", manager=MANAGER)
-        self.elements['beach_biome'] = UIButton(scale(pygame.Rect((1040, 200), (164, 92))), "",
+        self.elements['beach_biome'] = UIButton(scale(pygame.Rect((1040, 200), (164, 92))), "Beach",
                                                      object_id="#beach_biome_button", manager=MANAGER)
 
         # Camp Art Choosing Tabs, Dummy buttons, will be overridden.

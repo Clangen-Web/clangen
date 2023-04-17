@@ -1690,7 +1690,7 @@ class ProfileScreen(Screens):
             self.open_tab = 'dangerous'
             self.kill_cat_button = UIButton(
                 scale(pygame.Rect((1156, 972), (344, 72))),
-                "",
+                "Kill",
                 object_id="#kill_cat_button",
                 tool_tip_text='This cannot be reversed.',
                 starting_height=2, manager=MANAGER

@@ -67,7 +67,7 @@ class SaveCheck(UIWindow):
         )
 
         self.save_button = UIButton(scale(pygame.Rect((186, 230), (228, 60))),
-                                         "",
+                                         "Save",
                                          object_id="#save_button",
                                          container=self
                                          )

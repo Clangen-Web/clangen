@@ -386,14 +386,14 @@ class PatrolScreen(Screens):
                                                    , manager=MANAGER)
 
         # Tabs for the current patrol
-        self.elements['patrol_tab'] = UIButton(scale(pygame.Rect((1010, 920), (160, 70))), "",
+        self.elements['patrol_tab'] = UIButton(scale(pygame.Rect((1010, 920), (160, 70))), "Cats",
                                                     object_id="#patrol_cats_tab", manager=MANAGER)
         self.elements['patrol_tab'].disable()  # We start on the patrol_cats_tab
-        self.elements['skills'] = UIButton(scale(pygame.Rect((1180, 920), (308, 70))), "",
+        self.elements['skills'] = UIButton(scale(pygame.Rect((1180, 920), (308, 70))), "Skills",
                                                 object_id="#skills_cats_tab", manager=MANAGER)
 
         # Remove all button
-        self.elements['remove_all'] = UIButton(scale(pygame.Rect((1120, 1254), (248, 70))), "",
+        self.elements['remove_all'] = UIButton(scale(pygame.Rect((1120, 1254), (248, 70))), "Remove All",
                                                     object_id="#remove_all_button", manager=MANAGER)
 
         # Text box for skills and traits. Hidden for now, and with no text in it
