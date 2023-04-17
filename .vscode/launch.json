@@ -21,7 +21,7 @@
             "name": "Web",
             "type": "node-terminal",
             "request": "launch",
-            "command": "pygbag .",
+            "command": "pygbag --ume_block 0 --can_close 0 ${workspaceFolder}",
             "serverReadyAction": {
                 "pattern": "\\bServing HTTP on 127\\.0\\.0\\.1 port (\\d+)",
                 "uriFormat": "http://localhost:%s/#debug",
