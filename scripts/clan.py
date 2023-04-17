@@ -19,7 +19,7 @@ import platform
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.datadir import get_save_dir
 
-from scripts.platform import localStorage
+from scripts.platformwrapper import localStorage
 
 import json
 

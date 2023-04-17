@@ -7,7 +7,7 @@ import json
 import os
 from ast import literal_eval
 
-from scripts.platform import localStorage
+from scripts.platformwrapper import localStorage
 
 pygame.init()
 
