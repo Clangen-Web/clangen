@@ -1,0 +1,9 @@
+{
+    "pt-br": {
+        "#continue_button": "continuar",
+        "#switch_clan_button": "mudar de clã",
+        "#new_clan_button": "novo clã",
+        "#settings_button": "config. + info.",
+        "#quit_button": "sair"
+    }
+}
