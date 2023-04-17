@@ -222,21 +222,8 @@ class Game():
         # the clan specified in saves/clanlist.txt should be first in the list
         # so we can load it automatically
 
-        if os.path.exists(get_save_dir() + '/clanlist.txt'):
-            with open(get_save_dir() + '/clanlist.txt', 'r') as f:
-                loaded_clan = f.read().strip().splitlines()
-                if loaded_clan:
-                    loaded_clan = loaded_clan[0]
-                else:
-                    loaded_clan = None
-            os.remove(get_save_dir() + '/clanlist.txt')
-            if loaded_clan:
-                with open(get_save_dir() + '/currentclan.txt', 'w') as f:
-                    f.write(loaded_clan)
-        elif os.path.exists(get_save_dir() + '/currentclan.txt'):
-            with open(get_save_dir() + '/currentclan.txt', 'r') as f:
-                loaded_clan = f.read().strip()
-        else:
+        loaded_clan = localStorage.getItem('currentclan')
+        if loaded_clan == '':
             loaded_clan = None
 
         if loaded_clan and loaded_clan in clan_list:
@@ -263,13 +250,9 @@ class Game():
             with open(get_save_dir() + '/clanlist.txt', 'w') as f:
                 f.writelines(clans)'''
         if loaded_clan:
-            if os.path.exists(get_save_dir() + '/clanlist.txt'):
-                os.remove(get_save_dir() + '/clanlist.txt')  # we don't need clanlist.txt anymore
-            with open(get_save_dir() + '/currentclan.txt', 'w') as f:
-                f.write(loaded_clan)
+            localStorage.setItem('currentclan', loaded_clan)
         else:
-            if os.path.exists(get_save_dir() + '/currentclan.txt'):
-                os.remove(get_save_dir() + '/currentclan.txt')
+            localStorage.setItem('currentclan', '')
 
     def save_settings(self):
         """ Save user settings for later use """

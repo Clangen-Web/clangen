@@ -778,9 +778,6 @@ class Clan():
         if os.path.exists(get_save_dir() + f'/{self.name}clan.txt'):
             os.remove(get_save_dir() + f'/{self.name}clan.txt')
 
-        with open(get_save_dir() + '/currentclan.txt', 'w',
-                  encoding='utf-8') as write_file:
-            write_file.write(self.name)
         localStorage.setItem('currentclan', self.name)
             
     def save_clan_settings(self):
