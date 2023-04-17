@@ -16,6 +16,8 @@ It then loads the settings, and then loads the start screen.
 
 
 """ # pylint: enable=line-too-long
+
+import platform
 import shutil
 import sys
 import time
@@ -23,12 +25,20 @@ import os
 import asyncio
 import i18n
 
-from scripts.housekeeping.log_cleanup import prune_logs
-from scripts.stream_duplexer import UnbufferedStreamDuplexer
-from scripts.datadir import get_log_dir, setup_data_dir
-from scripts.version import get_version_info, VERSION_NAME
-
 async def main():
+
+    scr = platform.window.document.createElement("script") # pylint: disable=no-member
+    scr.src = "https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"
+    platform.window.document.head.appendChild(scr) # pylint: disable=no-member
+    while platform.window.localforage is None: # pylint: disable=no-member
+        print("Waiting for localforage to load...")
+        await asyncio.sleep(0.5)
+
+    from scripts.housekeeping.log_cleanup import prune_logs
+    from scripts.stream_duplexer import UnbufferedStreamDuplexer
+    from scripts.datadir import get_log_dir, setup_data_dir
+    from scripts.version import get_version_info, VERSION_NAME
+
     # directory = os.path.dirname(__file__)
     # if directory:
     #     os.chdir(directory)
