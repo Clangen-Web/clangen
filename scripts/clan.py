@@ -19,7 +19,6 @@ import platform
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.datadir import get_save_dir
 
-from scripts.platformwrapper import localStorage
 
 import json
 
@@ -778,7 +777,9 @@ class Clan():
         if os.path.exists(get_save_dir() + f'/{self.name}clan.txt'):
             os.remove(get_save_dir() + f'/{self.name}clan.txt')
 
-        localStorage.setItem('currentclan', self.name)
+        with open(get_save_dir() + '/currentclan.txt', 'w',
+                  encoding='utf-8') as write_file:
+            write_file.write(self.name)
             
     def save_clan_settings(self):
         with open(get_save_dir() + f'/{self.name}/clan_settings.json', 'w',

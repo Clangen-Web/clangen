@@ -7,7 +7,6 @@ import json
 import os
 from ast import literal_eval
 
-from scripts.platformwrapper import localStorage
 
 pygame.init()
 
@@ -222,8 +221,21 @@ class Game():
         # the clan specified in saves/clanlist.txt should be first in the list
         # so we can load it automatically
 
-        loaded_clan = localStorage.getItem('currentclan')
-        if loaded_clan == '':
+        if os.path.exists(get_save_dir() + '/clanlist.txt'):
+            with open(get_save_dir() + '/clanlist.txt', 'r') as f:
+                loaded_clan = f.read().strip().splitlines()
+                if loaded_clan:
+                    loaded_clan = loaded_clan[0]
+                else:
+                    loaded_clan = None
+            os.remove(get_save_dir() + '/clanlist.txt')
+            if loaded_clan:
+                with open(get_save_dir() + '/currentclan.txt', 'w') as f:
+                    f.write(loaded_clan)
+        elif os.path.exists(get_save_dir() + '/currentclan.txt'):
+            with open(get_save_dir() + '/currentclan.txt', 'r') as f:
+                loaded_clan = f.read().strip()
+        else:
             loaded_clan = None
 
         if loaded_clan and loaded_clan in clan_list:
@@ -250,27 +262,29 @@ class Game():
             with open(get_save_dir() + '/clanlist.txt', 'w') as f:
                 f.writelines(clans)'''
         if loaded_clan:
-            localStorage.setItem('currentclan', loaded_clan)
+            if os.path.exists(get_save_dir() + '/clanlist.txt'):
+                os.remove(get_save_dir() + '/clanlist.txt')  # we don't need clanlist.txt anymore
+            with open(get_save_dir() + '/currentclan.txt', 'w') as f:
+                f.write(loaded_clan)
         else:
-            localStorage.setItem('currentclan', '')
+            if os.path.exists(get_save_dir() + '/currentclan.txt'):
+                os.remove(get_save_dir() + '/currentclan.txt')
 
     def save_settings(self):
         """ Save user settings for later use """
         data = ''.join(f"{s}:{self.settings[s]}" + "\n"
                        for s in self.settings.keys())
 
-        localStorage.setItem('settings', data)
-
+        with open(get_save_dir() + '/settings.txt', 'w') as write_file:
+            write_file.write(data)
         self.settings_changed = False
 
         
 
     def load_settings(self):
         """ Load settings that user has saved from previous use """
-        settings_data = localStorage.getItem('settings')
-
-        if settings_data == None:
-            settings_data = ''
+        with open(get_save_dir() + '/settings.txt', 'r') as read_file:
+            settings_data = read_file.read()
 
         lines = settings_data.split(
             "\n"
