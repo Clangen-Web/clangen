@@ -353,21 +353,7 @@ async def main():
 
 
         window.onbeforeunload = async ()=>{
-            var message = "Are you sure you want to navigate away from this page ?";
-            if (confirm(message)) {
-                window.isSaved = false
-                FS.syncfs(false, (err) => {
-                    if (err) {console.log(err)}
-                    else {
-                        console.log('IndexedDB synced!')
-                        window.isSaved = true
-                    }
-                })
-                while (window.isSaved === false) {
-                    await new Promise(r => setTimeout(r, 100));
-                }
-                return true;
-            } else return false;
+            FS.syncfs(false, (err) => {console.log(err)})
         }
     """)
 
