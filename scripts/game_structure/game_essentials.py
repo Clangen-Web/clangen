@@ -238,7 +238,7 @@ class Game():
             os.makedirs(dir_name, exist_ok=True)
             shutil_move(temp_file_path, path)
 
-            platform.window.FS.syncfs(False, lambda x: None)
+            platform.window.FS.syncfs(False, lambda x: None) # pylint: disable=no-member
 
             return True
 
