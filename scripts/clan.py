@@ -545,6 +545,10 @@ class Clan():
             self.all_clans.append(OtherClan())
         self.save_clan()
         game.save_clanlist(self.name)
+
+        platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+
+
         game.switches['clan_list'] = game.read_clans()
         # if map_available:
         #    save_map(game.map_info, game.clan.name)
@@ -696,7 +700,7 @@ class Clan():
         TODO: DOCS
         """
         game.save_clanlist(clan)
-        quit(savesettings=False, clearevents=True)
+        platform.window.location.reload() # pylint: disable=no-member
 
     def save_clan(self):
         """
@@ -1097,6 +1101,7 @@ class Clan():
             with open(file_path, 'w', encoding='utf-8') as rel_file:
                 json_string = json.dumps(herbs, indent=4)
                 rel_file.write(json_string)
+                platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
             clan.herbs = herbs
 
     def save_herbs(self, clan):
@@ -1163,6 +1168,7 @@ class Clan():
                 with open(file_path, 'w', encoding='utf-8') as rel_file:
                     json_string = json.dumps(clan.primary_disaster, indent=4)
                     rel_file.write(json_string)
+                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
         except:
             clan.primary_disaster = None
 
@@ -1190,6 +1196,7 @@ class Clan():
                     json_string = json.dumps(clan.secondary_disaster,
                                               indent=4)
                     rel_file.write(json_string)
+                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
 
         except:
             clan.secondary_disaster = None

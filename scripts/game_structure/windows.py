@@ -11,6 +11,8 @@ from re import sub
 from scripts.cat.names import Name
 from pygame_gui.elements import UIWindow
 
+import platform
+
 from scripts.datadir import get_save_dir, get_cache_dir
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game, screen_x, screen_y
@@ -120,6 +122,11 @@ class SaveCheck(UIWindow):
                     game.save_cats()
                     game.clan.save_clan()
                     game.clan.save_pregnancy(game.clan)
+
+                    
+                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+
+
                     self.save_button_saving_state.hide()
                     self.save_button_saved_state.show()
             elif event.ui_element == self.back_button:

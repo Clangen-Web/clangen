@@ -14,6 +14,8 @@ from scripts.patrol import Patrol
 
 import json
 
+import platform
+
 from scripts.cat.names import names
 from scripts.cat.cats import Cat, cat_class
 from scripts.cat.pelts import collars
@@ -257,6 +259,9 @@ class Events():
                 game.save_cats()
                 game.clan.save_clan()
                 game.clan.save_pregnancy(game.clan)
+
+                platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+
             except:
                 SaveError(traceback.format_exc())
 

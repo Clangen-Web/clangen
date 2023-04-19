@@ -9,6 +9,8 @@ from copy import deepcopy
 
 from .base_screens import Screens, cat_profiles
 
+import platform
+
 from scripts.cat.cats import Cat
 from scripts.game_structure.ui_button import UIButton
 from scripts.game_structure.image_button import UITextBoxTweaked, UISpriteButton
@@ -61,6 +63,10 @@ class ClanScreen(Screens):
                     game.clan.save_clan()
                     game.clan.save_pregnancy(game.clan)
                     game.save_settings()
+
+                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+
+
                     game.switches['saved_clan'] = True
                     self.update_buttons_and_text()
                 except RuntimeError:
