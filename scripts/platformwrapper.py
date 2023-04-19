@@ -1,38 +1,28 @@
 # pylint: disable=no-member
 import platform
-import asyncio
+from sys import platform as _platform
+if _platform == "emscripten":
+    is_web = True
+else:
+    is_web = False
+del _platform
 
 
-class localStorage:
-    
-    def __init__(self):
-        pass
 
-    @staticmethod
-    def getItem(key):
-        return platform.window.localStorage.getItem(key)
-    @staticmethod
-    def setItem(key, value):
-        return platform.window.localStorage.setItem(key, value)
-    
+def reload():
+    if not is_web:
+        return
+    platform.window.location.reload()
 
-class localForage:
+def pushdb():
+    if not is_web:
+        return
+    platform.window.FS.syncfs(False, platform.window.console.log)
 
-    def __init__(self):
-        pass
+def pulldb():
+    if not is_web:
+        return
+    platform.window.FS.syncfs(True, platform.window.console.log)
 
-    @staticmethod
-    async def getItem(key):
-        promise = platform.window.localforage.getItem(key)
-        val = None
-        def wait(value):
-            val = value
-        promise.then(wait)
-        while val is None:
-            await asyncio.sleep(0.5)
-        return val
-
-
-    @staticmethod
-    def setItem(key, value):
-        platform.window.localforage.setItem(key, value)
+def _is_web():
+    return is_web

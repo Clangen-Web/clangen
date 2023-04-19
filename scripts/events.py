@@ -14,7 +14,7 @@ from scripts.patrol import Patrol
 
 import json
 
-import platform
+import scripts.platformwrapper as web
 
 from scripts.cat.names import names
 from scripts.cat.cats import Cat, cat_class
@@ -260,7 +260,7 @@ class Events():
                 game.clan.save_clan()
                 game.clan.save_pregnancy(game.clan)
 
-                platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                web.pushdb()
 
             except:
                 SaveError(traceback.format_exc())

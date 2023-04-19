@@ -87,11 +87,11 @@ FONT = pygame.font.Font('resources/fonts/clangen.ttf', 16)
 COLOR = (239, 229, 206)
 
 PLATFORM = None
-from sys import platform
-if platform == "emscripten":
+from scripts.platformwrapper import _is_web
+if _is_web():
     PLATFORM = "web"
     FONT = pygame.font.SysFont(None, 24)
-del platform
+
 
 class _Language():
     """Class for rendering button text in other languages, from languages/.*/buttons.json"""

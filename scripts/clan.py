@@ -14,7 +14,7 @@ import os
 
 import pygame
 
-import platform
+import scripts.platformwrapper as web
 
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.datadir import get_save_dir
@@ -546,7 +546,7 @@ class Clan():
         self.save_clan()
         game.save_clanlist(self.name)
 
-        platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+        web.pushdb()
 
 
         game.switches['clan_list'] = game.read_clans()
@@ -700,7 +700,7 @@ class Clan():
         TODO: DOCS
         """
         game.save_clanlist(clan)
-        platform.window.location.reload() # pylint: disable=no-member
+        web.reload()
 
     def save_clan(self):
         """
@@ -1101,7 +1101,7 @@ class Clan():
             with open(file_path, 'w', encoding='utf-8') as rel_file:
                 json_string = json.dumps(herbs, indent=4)
                 rel_file.write(json_string)
-                platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                web.pushdb()
             clan.herbs = herbs
 
     def save_herbs(self, clan):
@@ -1168,7 +1168,7 @@ class Clan():
                 with open(file_path, 'w', encoding='utf-8') as rel_file:
                     json_string = json.dumps(clan.primary_disaster, indent=4)
                     rel_file.write(json_string)
-                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                    web.pushdb()
         except:
             clan.primary_disaster = None
 
@@ -1196,7 +1196,7 @@ class Clan():
                     json_string = json.dumps(clan.secondary_disaster,
                                               indent=4)
                     rel_file.write(json_string)
-                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                    web.pushdb()
 
         except:
             clan.secondary_disaster = None

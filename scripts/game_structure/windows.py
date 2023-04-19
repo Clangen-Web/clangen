@@ -11,7 +11,7 @@ from re import sub
 from scripts.cat.names import Name
 from pygame_gui.elements import UIWindow
 
-import platform
+import scripts.platformwrapper as web
 
 from scripts.datadir import get_save_dir, get_cache_dir
 from scripts.game_structure import image_cache
@@ -124,7 +124,7 @@ class SaveCheck(UIWindow):
                     game.clan.save_pregnancy(game.clan)
 
                     
-                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                    web.pushdb()
 
 
                     self.save_button_saving_state.hide()

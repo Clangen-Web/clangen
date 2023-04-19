@@ -9,7 +9,7 @@ from copy import deepcopy
 
 from .base_screens import Screens, cat_profiles
 
-import platform
+import scripts.platformwrapper as web
 
 from scripts.cat.cats import Cat
 from scripts.game_structure.ui_button import UIButton
@@ -64,7 +64,7 @@ class ClanScreen(Screens):
                     game.clan.save_pregnancy(game.clan)
                     game.save_settings()
 
-                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
+                    web.pushdb()
 
 
                     game.switches['saved_clan'] = True
