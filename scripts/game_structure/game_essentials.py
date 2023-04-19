@@ -238,8 +238,6 @@ class Game():
             os.makedirs(dir_name, exist_ok=True)
             shutil_move(temp_file_path, path)
 
-            platform.window.FS.syncfs(False, lambda x: None) # pylint: disable=no-member
-
             return True
 
     def read_clans(self):
@@ -281,6 +279,7 @@ class Game():
             if loaded_clan:
                 with open(get_save_dir() + '/currentclan.txt', 'w') as f:
                     f.write(loaded_clan)
+                    platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
         elif os.path.exists(get_save_dir() + '/currentclan.txt'):
             with open(get_save_dir() + '/currentclan.txt', 'r') as f:
                 loaded_clan = f.read().strip()
@@ -624,6 +623,7 @@ class Game():
 
             with open(get_save_dir() + '/' + clanname + '/faded_cats_info_copy.txt', 'a') as write_file:
                 write_file.write(copy_of_info)
+                platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
 
         game.cat_to_fade = []
 
@@ -648,6 +648,7 @@ if not os.path.exists(get_save_dir() + '/settings.txt'):
     os.makedirs(get_save_dir(), exist_ok=True)
     with open(get_save_dir() + '/settings.txt', 'w') as write_file:
         write_file.write('')
+        platform.window.FS.syncfs(False, platform.window.console.log) # pylint: disable=no-member
 game.load_settings()
 
 pygame.display.set_caption('Clan Generator')
