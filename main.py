@@ -36,6 +36,7 @@ async def main():
 
 
     # im so sorry but pygbag doesnt add -lidbfs.js to compilation so we have to define it manually
+    platform.window.fs_loaded = False
     platform.window.eval("""
         window.IDBFS = {
         dbs: {},
@@ -343,9 +344,16 @@ async def main():
     FS.mount(IDBFS, {'root': '.'}, '/saves')
     FS.syncfs(true, (err) => {
         if (err) {console.log(err)}
-        else {console.log('IndexedDB mounted and synced!')}
+        else {
+            console.log('IndexedDB mounted and synced!')
+            window.fs_loaded = true
+        }
     })
     """)
+
+    while platform.window.fs_loaded is False: # pylint: disable=no-member
+        print("Waiting for fs to load...")
+        await asyncio.sleep(0.5)
 
 
 

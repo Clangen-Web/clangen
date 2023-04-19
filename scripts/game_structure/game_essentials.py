@@ -9,6 +9,9 @@ from shutil import move as shutil_move
 from ast import literal_eval
 import traceback
 
+import platform
+
+
 pygame.init()
 
 
@@ -234,6 +237,9 @@ class Game():
             # This section is reached is the file was not nullied. Move the file and return True
             os.makedirs(dir_name, exist_ok=True)
             shutil_move(temp_file_path, path)
+
+            platform.window.FS.syncfs(False, lambda x: None)
+
             return True
 
     def read_clans(self):
