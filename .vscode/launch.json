@@ -34,7 +34,7 @@
             "type": "node-terminal",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "command": "nodemon -e py --exec \"pygbag --ume_block 0 --can_close 0 --template index.html ${workspaceFolder}\"",
+            "command": "nodemon -e py,js,html -i build --exec \"pygbag --ume_block 0 --can_close 0 --template index.html ${workspaceFolder}\"",
             "serverReadyAction": {
                 "pattern": "\\bServing HTTP on 127\\.0\\.0\\.1 port (\\d+)",
                 "uriFormat": "http://localhost:%s/#debug",

@@ -83,15 +83,15 @@
         Promise.race([fetched.catch(_ => cached), cached])
             .then(resp => {
                 if (resp) {
-                    console.log('[SW] fetch resp response: ' + resp)
+                    console.log('[SW] fetch resp response: ', resp)
                     return resp
                 } else if (fetched) {
-                    console.log('[SW] fetch fetched response: ' + fetched)
+                    console.log('[SW] fetch fetched response: ', fetched)
                     return fetched
                 }
             })
             .catch(_ => {
-                console.error('[SW] fetch error: ' + _)
+                console.error('[SW] fetch error: ', _)
             })
         )
 
@@ -101,16 +101,20 @@
             .then(([response, cache]) => {
                 if(response.ok){
                     console.groupCollapsed('[SW] fetch response ok')
-                    console.log('[SW] updating cache: ' + fixedUrl)
-                    console.log('[SW] response: ' + response)
-                    console.log('[SW] cache: ' + cache)
-                    console.log('[SW] event.request: ' + event.request)
+                    console.log('[SW] updating cache: ', fixedUrl)
+                    console.log('[SW] response: ', response)
+                    console.log('[SW] cache: ', cache)
+                    console.log('[SW] event.request: ', event.request)
                     console.groupEnd()
-                    cache.put(event.request, response)
+                    try {
+                        cache.put(event.request, response)
+                    } catch (error) {
+                        console.error('[SW] cache.put error: ', error)
+                    }
                 }
             })
             .catch(_ => {
-                console.error('[SW] fetch error: ' + _)
+                console.error('[SW] fetch error: ', _)
             })
         )
     }
