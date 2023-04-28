@@ -25,7 +25,7 @@ jobs:
     - name: Checkout
       run: |
             python3 -m pip install pygbag
-            python3 -m pygbag --ume_block 0 --build $GITHUB_WORKSPACE/main.py
+            python3 -m pygbag --ume_block 0 --template index.html --build $GITHUB_WORKSPACE/main.py
     - name: Setup Pages
       uses: actions/configure-pages@v3
     - name: Upload artifact
