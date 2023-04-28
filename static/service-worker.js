@@ -53,6 +53,13 @@ const getFixedUrl = (req) => {
 self.addEventListener("activate", (event) => {
   console.log("[SW] activate");
   event.waitUntil(self.clients.claim());
+
+  console.log('[SW] attempting to cache main.wasm')
+  caches.open("pwa-cache").then((cache) => {
+    cache.addAll([
+      'https://pygame-web.github.io/archives/0.7/python311/main.wasm'
+    ]);
+  })
 });
 
 /**
@@ -82,10 +89,10 @@ self.addEventListener("fetch", (event) => {
       Promise.race([fetched.catch((_) => cached), cached])
         .then((resp) => {
           if (resp) {
-            console.log("[SW] fetch resp response: ", resp);
+            console.log("[SW] returning cached response: ", resp);
             return resp;
           } else if (fetched) {
-            console.log("[SW] fetch fetched response: ", fetched);
+            console.log("[SW] returning fetched response: ", fetched);
             return fetched;
           }
         })
