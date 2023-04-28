@@ -19,9 +19,7 @@
 
     const HOSTNAME_WHITELIST = [
         self.location.hostname,
-        'fonts.gstatic.com',
-        'fonts.googleapis.com',
-        'cdn.jsdelivr.net'
+        'pygame-web.github.io'
     ]
 
     // The Util Function to hack URLs of intercepted requests
@@ -43,6 +41,7 @@
         if (url.hostname === self.location.hostname) {
             url.search += (url.search ? '&' : '?') + 'cache-bust=' + now
         }
+        console.log('[SW] getFixedUrl(): ' + req.url + ' => ' + url.href)
         return url.href
     }
 
@@ -53,6 +52,7 @@
      *  waitUntil(): activating ====> activated
      */
     self.addEventListener('activate', event => {
+        console.log('[SW] activate')
       event.waitUntil(self.clients.claim())
     })
 
@@ -63,8 +63,10 @@
      *  void respondWith(Promise<Response> r)
      */
     self.addEventListener('fetch', event => {
+        console.log('[SW] fetch ' + event.request.url)
     // Skip some of cross-origin requests, like those for Google Analytics.
     if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
+        console.log('[SW] whitelisted')
         // Stale-while-revalidate
         // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
         // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
@@ -79,15 +81,37 @@
         // If neither yields a response, return offline pages.
         event.respondWith(
         Promise.race([fetched.catch(_ => cached), cached])
-            .then(resp => resp || fetched)
-            .catch(_ => { /* eat any errors */ })
+            .then(resp => {
+                if (resp) {
+                    console.log('[SW] fetch resp response: ' + resp)
+                    return resp
+                } else if (fetched) {
+                    console.log('[SW] fetch fetched response: ' + fetched)
+                    return fetched
+                }
+            })
+            .catch(_ => {
+                console.error('[SW] fetch error: ' + _)
+            })
         )
 
         // Update the cache with the version we fetched (only for ok status)
         event.waitUntil(
         Promise.all([fetchedCopy, caches.open("pwa-cache")])
-            .then(([response, cache]) => response.ok && cache.put(event.request, response))
-            .catch(_ => { /* eat any errors */ })
+            .then(([response, cache]) => {
+                if(response.ok){
+                    console.groupCollapsed('[SW] fetch response ok')
+                    console.log('[SW] updating cache: ' + fixedUrl)
+                    console.log('[SW] response: ' + response)
+                    console.log('[SW] cache: ' + cache)
+                    console.log('[SW] event.request: ' + event.request)
+                    console.groupEnd()
+                    cache.put(event.request, response)
+                }
+            })
+            .catch(_ => {
+                console.error('[SW] fetch error: ' + _)
+            })
         )
     }
     })
