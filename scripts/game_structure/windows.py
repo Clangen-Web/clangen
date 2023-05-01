@@ -496,6 +496,8 @@ class SpecifyCatGender(UIWindow):
 
 
 
+
+
 class SaveError(UIWindow):
     def __init__(self, error_text):
         super().__init__(scale(pygame.Rect((300, 300), (1000, 800))),
@@ -511,7 +513,7 @@ class SaveError(UIWindow):
             container=self
         )
         
-        self.close_button = UIButton(
+        self.close_button = UIImageButton(
             scale(pygame.Rect((940, 10), (44, 44))),
             "",
             object_id="#exit_window_button",

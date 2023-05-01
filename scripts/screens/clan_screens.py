@@ -63,10 +63,7 @@ class ClanScreen(Screens):
                     game.clan.save_clan()
                     game.clan.save_pregnancy(game.clan)
                     game.save_settings()
-
                     web.pushdb()
-
-
                     game.switches['saved_clan'] = True
                     self.update_buttons_and_text()
                 except RuntimeError:
@@ -1392,8 +1389,8 @@ class AllegiancesScreen(Screens):
     def screen_switches(self):
         # Heading
         self.heading = pygame_gui.elements.UITextBox(f'{game.clan.name}Clan Allegiances',
-                                                     scale(pygame.Rect((625, 230), (800, 80))),
-                                                     object_id=get_text_box_theme("#text_box_34_horizleft")
+                                                     scale(pygame.Rect((390, 230), (800, 80))),
+                                                     object_id=get_text_box_theme("#text_box_34_horizcenter")
                                                      , manager=MANAGER)
 
         # Set Menu Buttons.

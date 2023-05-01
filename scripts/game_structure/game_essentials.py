@@ -207,7 +207,7 @@ class Game():
         
         # If write_data is not a string, 
         if type(write_data) is not str:
-            _data = json.dumps(write_data, indent=4)
+            _data = ujson.dumps(write_data, indent=4)
         else:
             _data = write_data
             
@@ -237,7 +237,6 @@ class Game():
             # This section is reached is the file was not nullied. Move the file and return True
             os.makedirs(dir_name, exist_ok=True)
             shutil_move(temp_file_path, path)
-
             return True
 
     def read_clans(self):
@@ -324,8 +323,6 @@ class Game():
 
         self.settings_changed = False
         game.safe_save(get_save_dir() + '/settings.txt', data)
-
-        
 
     def load_settings(self):
         """ Load settings that user has saved from previous use """

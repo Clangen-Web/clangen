@@ -259,9 +259,7 @@ class Events():
                 game.save_cats()
                 game.clan.save_clan()
                 game.clan.save_pregnancy(game.clan)
-
                 web.pushdb()
-
             except:
                 SaveError(traceback.format_exc())
 
