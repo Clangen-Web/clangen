@@ -513,7 +513,7 @@ class SaveError(UIWindow):
             container=self
         )
         
-        self.close_button = UIImageButton(
+        self.close_button = UIButton(
             scale(pygame.Rect((940, 10), (44, 44))),
             "",
             object_id="#exit_window_button",
