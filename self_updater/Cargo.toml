@@ -1,7 +1,0 @@
-[package]
-name = "self_updater"
-version = "0.1.0"
-edition = "2021"
-
-[build-dependencies]
-static_vcruntime = "2.0"
