@@ -3,4 +3,4 @@
 It was a very unpolished, in development version of clangen web
 
 
-As always, the original web verion is available [here](https://clangen-web.github.io)
+As always, the original web version is available [here](https://clangen-web.github.io)
